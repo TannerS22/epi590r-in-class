@@ -71,12 +71,12 @@ tbl_summary(
 		region_cat ~ "Region"
 	),
 	statistic = list(
-		income ~ "(Median: {median}, 90th = {p90}, 10th = {p10})",
-		starts_with("sleep") ~ " min = {min}, max = {max}"
+		income ~ "(Median: {median}, 10th: {p10}, 90th: {p90})",
+		starts_with("sleep") ~ "Min: {min}, Median {median}, Max: {max}"
 		),
 	digits = list(
-		income ~ c(3),
-		starts_with("sleep") ~ c(1)
+		income ~ 3,
+		starts_with("sleep") ~ 1
 	),
 	missing_text = "Missing") |>
 	add_p(test = list(all_continuous() ~ "t.test",

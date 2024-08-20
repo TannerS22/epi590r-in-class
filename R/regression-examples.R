@@ -95,3 +95,29 @@ tbl_int <- tbl_regression(
 
 tbl_merge(list(tbl_no_int, tbl_int),
 					tab_spanner = c("**Model 1**", "**Model 2**"))
+
+## Q3
+tbl_uvregression(
+	nlsy,
+	x = sex_cat,
+	include = c(nsibs, starts_with("sleep"), income),
+	method = lm)
+
+##Q4
+
+tbl_uvregression(
+	nlsy,
+	y = nsibs,
+	include = c(sex_cat, race_eth_cat,
+							age_bir),
+	method = glm,
+	method.args = list(family = poisson()),
+	exponentiate = TRUE)
+
+##Q4
+tbl_uvregression(
+nlsy,
+y = glasses,
+include = c(sex_cat, eyesight_cat),
+method = glm,
+method.args = list(family = binomial(link = "log")))
